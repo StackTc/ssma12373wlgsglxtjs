@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.spring.dao.HuowuMapper">
+    <resultMap id="BaseResultMap" type="com.spring.entity.Huowu">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+                            <result column="huowu" property="huowu" jdbcType="VARCHAR"/>
+                                    <result column="jine" property="jine" jdbcType="DECIMAL"/>
+                                
+    </resultMap>
+
+    <sql id="table">
+        huowu    </sql>
+    <sql id="Base_Column_List">
+        id, huowu, jine    </sql>
+    
+
+    <select id="count" resultType="Integer" parameterType="com.spring.util.SelectExample">
+        SELECT COUNT(*) FROM
+        <include refid="table"/>
+        <where>
+            ${where}
+        </where>
+    </select>
+
+    <select id="selectAll" resultMap="BaseResultMap">
+        SELECT * FROM
+        <include refid="table"/>
+        <where>
+            ${where}
+        </where>
+        <if test="order != null">
+            order by ${order}
+        </if>
+    </select>
+
+
+    <select id="selectPage" resultMap="BaseResultMap">
+        SELECT * FROM
+        <include refid="table"/>
+        <where>
+            ${where}
+        </where>
+        <if test="order != null">
+            order by ${order}
+        </if>
+    </select>
+
+
+
+    <select id="find" resultMap="BaseResultMap" parameterType="com.spring.entity.Huowu">
+        SELECT * FROM
+        <include refid="table"/>
+        where id = #{id}
+    </select>
+
+    <delete id="delete" parameterType="com.spring.entity.Huowu">
+        DELETE FROM
+        <include refid="table"/>
+        where id = #{id}
+    </delete>
+
+    <update id="update" parameterType="com.spring.entity.Huowu">
+        UPDATE
+        <include refid="table"/>
+        <set>
+                        <if test="huowu != null">
+                huowu = #{huowu},
+            </if>
+                        <if test="jine != null">
+                jine = #{jine},
+            </if>
+                    </set>
+        where id = #{id}
+    </update>
+        <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.spring.entity.Huowu">
+        INSERT INTO
+        <include refid="table"/>
+        ( huowu , jine ) values( #{huowu} , #{jine} )
+    </insert>
+
+</mapper>

@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.spring.dao.DingdanMapper">
+    <resultMap id="BaseResultMap" type="com.spring.entity.Dingdan">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+                            <result column="yuyueid" property="yuyueid" jdbcType="INTEGER"/>
+                                    <result column="bianhao" property="bianhao" jdbcType="VARCHAR"/>
+                                    <result column="huowu" property="huowu" jdbcType="VARCHAR"/>
+                                    <result column="jine" property="jine" jdbcType="DECIMAL"/>
+                                    <result column="quyu" property="quyu" jdbcType="VARCHAR"/>
+                                    <result column="mudidi" property="mudidi" jdbcType="VARCHAR"/>
+                                    <result column="fahuodi" property="fahuodi" jdbcType="VARCHAR"/>
+                                    <result column="fahuorendianhua" property="fahuorendianhua" jdbcType="VARCHAR"/>
+                                    <result column="fahuoren" property="fahuoren" jdbcType="VARCHAR"/>
+                                    <result column="shouhuorendianhua" property="shouhuorendianhua" jdbcType="VARCHAR"/>
+                                    <result column="shouhuoren" property="shouhuoren" jdbcType="VARCHAR"/>
+                                    <result column="tianjiaren" property="tianjiaren" jdbcType="VARCHAR"/>
+                                    <result column="yunshu" property="yunshu" jdbcType="VARCHAR"/>
+                                    <result column="beizhu" property="beizhu" jdbcType="VARCHAR"/>
+                                    <result column="caozuoren" property="caozuoren" jdbcType="VARCHAR"/>
+                                
+    </resultMap>
+
+    <sql id="table">
+        dingdan    </sql>
+    <sql id="Base_Column_List">
+        id, yuyueid, bianhao, huowu, jine, quyu, mudidi, fahuodi, fahuorendianhua, fahuoren, shouhuorendianhua, shouhuoren, tianjiaren, yunshu, beizhu, caozuoren    </sql>
+    
+
+    <select id="count" resultType="Integer" parameterType="com.spring.util.SelectExample">
+        SELECT COUNT(*) FROM
+        <include refid="table"/>
+        <where>
+            ${where}
+        </where>
+    </select>
+
+    <select id="selectAll" resultMap="BaseResultMap">
+        SELECT * FROM
+        <include refid="table"/>
+        <where>
+            ${where}
+        </where>
+        <if test="order != null">
+            order by ${order}
+        </if>
+    </select>
+
+
+    <select id="selectPage" resultMap="BaseResultMap">
+        SELECT * FROM
+        <include refid="table"/>
+        <where>
+            ${where}
+        </where>
+        <if test="order != null">
+            order by ${order}
+        </if>
+    </select>
+
+
+
+    <select id="find" resultMap="BaseResultMap" parameterType="com.spring.entity.Dingdan">
+        SELECT * FROM
+        <include refid="table"/>
+        where id = #{id}
+    </select>
+
+    <delete id="delete" parameterType="com.spring.entity.Dingdan">
+        DELETE FROM
+        <include refid="table"/>
+        where id = #{id}
+    </delete>
+
+    <update id="update" parameterType="com.spring.entity.Dingdan">
+        UPDATE
+        <include refid="table"/>
+        <set>
+                        <if test="yuyueid != null">
+                yuyueid = #{yuyueid},
+            </if>
+                        <if test="bianhao != null">
+                bianhao = #{bianhao},
+            </if>
+                        <if test="huowu != null">
+                huowu = #{huowu},
+            </if>
+                        <if test="jine != null">
+                jine = #{jine},
+            </if>
+                        <if test="quyu != null">
+                quyu = #{quyu},
+            </if>
+                        <if test="mudidi != null">
+                mudidi = #{mudidi},
+            </if>
+                        <if test="fahuodi != null">
+                fahuodi = #{fahuodi},
+            </if>
+                        <if test="fahuorendianhua != null">
+                fahuorendianhua = #{fahuorendianhua},
+            </if>
+                        <if test="fahuoren != null">
+                fahuoren = #{fahuoren},
+            </if>
+                        <if test="shouhuorendianhua != null">
+                shouhuorendianhua = #{shouhuorendianhua},
+            </if>
+                        <if test="shouhuoren != null">
+                shouhuoren = #{shouhuoren},
+            </if>
+                        <if test="tianjiaren != null">
+                tianjiaren = #{tianjiaren},
+            </if>
+                        <if test="yunshu != null">
+                yunshu = #{yunshu},
+            </if>
+                        <if test="beizhu != null">
+                beizhu = #{beizhu},
+            </if>
+                        <if test="caozuoren != null">
+                caozuoren = #{caozuoren},
+            </if>
+                    </set>
+        where id = #{id}
+    </update>
+        <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.spring.entity.Dingdan">
+        INSERT INTO
+        <include refid="table"/>
+        ( yuyueid , bianhao , huowu , jine , quyu , mudidi , fahuodi , fahuorendianhua , fahuoren , shouhuorendianhua , shouhuoren , tianjiaren , yunshu , beizhu , caozuoren ) values( #{yuyueid} , #{bianhao} , #{huowu} , #{jine} , #{quyu} , #{mudidi} , #{fahuodi} , #{fahuorendianhua} , #{fahuoren} , #{shouhuorendianhua} , #{shouhuoren} , #{tianjiaren} , #{yunshu} , #{beizhu} , #{caozuoren} )
+    </insert>
+
+</mapper>

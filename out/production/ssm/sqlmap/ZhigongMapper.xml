@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.spring.dao.ZhigongMapper">
+    <resultMap id="BaseResultMap" type="com.spring.entity.Zhigong">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+                            <result column="gonghao" property="gonghao" jdbcType="VARCHAR"/>
+                                    <result column="mima" property="mima" jdbcType="VARCHAR"/>
+                                    <result column="xingming" property="xingming" jdbcType="VARCHAR"/>
+                                    <result column="quyu" property="quyu" jdbcType="VARCHAR"/>
+                                    <result column="xingbie" property="xingbie" jdbcType="VARCHAR"/>
+                                    <result column="shouji" property="shouji" jdbcType="VARCHAR"/>
+                                
+    </resultMap>
+
+    <sql id="table">
+        zhigong    </sql>
+    <sql id="Base_Column_List">
+        id, gonghao, mima, xingming, quyu, xingbie, shouji    </sql>
+        <select id="login" resultMap="BaseResultMap" parameterType="com.spring.entity.Zhigong">
+        select
+        <include refid="Base_Column_List"/>
+        from <include refid="table"/>
+        where gonghao = #{gonghao}
+        AND mima = #{mima}
+    </select>
+    
+
+    <select id="count" resultType="Integer" parameterType="com.spring.util.SelectExample">
+        SELECT COUNT(*) FROM
+        <include refid="table"/>
+        <where>
+            ${where}
+        </where>
+    </select>
+
+    <select id="selectAll" resultMap="BaseResultMap">
+        SELECT * FROM
+        <include refid="table"/>
+        <where>
+            ${where}
+        </where>
+        <if test="order != null">
+            order by ${order}
+        </if>
+    </select>
+
+
+    <select id="selectPage" resultMap="BaseResultMap">
+        SELECT * FROM
+        <include refid="table"/>
+        <where>
+            ${where}
+        </where>
+        <if test="order != null">
+            order by ${order}
+        </if>
+    </select>
+
+
+
+    <select id="find" resultMap="BaseResultMap" parameterType="com.spring.entity.Zhigong">
+        SELECT * FROM
+        <include refid="table"/>
+        where id = #{id}
+    </select>
+
+    <delete id="delete" parameterType="com.spring.entity.Zhigong">
+        DELETE FROM
+        <include refid="table"/>
+        where id = #{id}
+    </delete>
+
+    <update id="update" parameterType="com.spring.entity.Zhigong">
+        UPDATE
+        <include refid="table"/>
+        <set>
+                        <if test="gonghao != null">
+                gonghao = #{gonghao},
+            </if>
+                        <if test="mima != null">
+                mima = #{mima},
+            </if>
+                        <if test="xingming != null">
+                xingming = #{xingming},
+            </if>
+                        <if test="quyu != null">
+                quyu = #{quyu},
+            </if>
+                        <if test="xingbie != null">
+                xingbie = #{xingbie},
+            </if>
+                        <if test="shouji != null">
+                shouji = #{shouji},
+            </if>
+                    </set>
+        where id = #{id}
+    </update>
+        <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.spring.entity.Zhigong">
+        INSERT INTO
+        <include refid="table"/>
+        ( gonghao , mima , xingming , quyu , xingbie , shouji ) values( #{gonghao} , #{mima} , #{xingming} , #{quyu} , #{xingbie} , #{shouji} )
+    </insert>
+
+</mapper>

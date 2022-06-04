@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.spring.dao.YuyueMapper">
+    <resultMap id="BaseResultMap" type="com.spring.entity.Yuyue">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+                            <result column="bianhao" property="bianhao" jdbcType="VARCHAR"/>
+                                    <result column="leixing" property="leixing" jdbcType="INTEGER"/>
+                                    <result column="huowu" property="huowu" jdbcType="VARCHAR"/>
+                                    <result column="jine" property="jine" jdbcType="DECIMAL"/>
+                                    <result column="quyu" property="quyu" jdbcType="VARCHAR"/>
+                                    <result column="mudidi" property="mudidi" jdbcType="VARCHAR"/>
+                                    <result column="fahuodi" property="fahuodi" jdbcType="VARCHAR"/>
+                                    <result column="fahuorendianhua" property="fahuorendianhua" jdbcType="VARCHAR"/>
+                                    <result column="fahuoren" property="fahuoren" jdbcType="VARCHAR"/>
+                                    <result column="shouhuorendianhua" property="shouhuorendianhua" jdbcType="VARCHAR"/>
+                                    <result column="shouhuoren" property="shouhuoren" jdbcType="VARCHAR"/>
+                                    <result column="shijian" property="shijian" jdbcType="VARCHAR"/>
+                                    <result column="beizhu" property="beizhu" jdbcType="VARCHAR"/>
+                                    <result column="tianjiaren" property="tianjiaren" jdbcType="VARCHAR"/>
+                                            <result column="iszf" property="iszf" jdbcType="VARCHAR"/>
+        
+    </resultMap>
+
+    <sql id="table">
+        yuyue    </sql>
+    <sql id="Base_Column_List">
+        id, bianhao, leixing, huowu, jine, quyu, mudidi, fahuodi, fahuorendianhua, fahuoren, shouhuorendianhua, shouhuoren, shijian, beizhu, tianjiaren, iszf    </sql>
+    
+
+    <select id="count" resultType="Integer" parameterType="com.spring.util.SelectExample">
+        SELECT COUNT(*) FROM
+        <include refid="table"/>
+        <where>
+            ${where}
+        </where>
+    </select>
+
+    <select id="selectAll" resultMap="BaseResultMap">
+        SELECT * FROM
+        <include refid="table"/>
+        <where>
+            ${where}
+        </where>
+        <if test="order != null">
+            order by ${order}
+        </if>
+    </select>
+
+
+    <select id="selectPage" resultMap="BaseResultMap">
+        SELECT * FROM
+        <include refid="table"/>
+        <where>
+            ${where}
+        </where>
+        <if test="order != null">
+            order by ${order}
+        </if>
+    </select>
+
+
+
+    <select id="find" resultMap="BaseResultMap" parameterType="com.spring.entity.Yuyue">
+        SELECT * FROM
+        <include refid="table"/>
+        where id = #{id}
+    </select>
+
+    <delete id="delete" parameterType="com.spring.entity.Yuyue">
+        DELETE FROM
+        <include refid="table"/>
+        where id = #{id}
+    </delete>
+
+    <update id="update" parameterType="com.spring.entity.Yuyue">
+        UPDATE
+        <include refid="table"/>
+        <set>
+                        <if test="bianhao != null">
+                bianhao = #{bianhao},
+            </if>
+                        <if test="leixing != null">
+                leixing = #{leixing},
+            </if>
+                        <if test="huowu != null">
+                huowu = #{huowu},
+            </if>
+                        <if test="jine != null">
+                jine = #{jine},
+            </if>
+                        <if test="quyu != null">
+                quyu = #{quyu},
+            </if>
+                        <if test="mudidi != null">
+                mudidi = #{mudidi},
+            </if>
+                        <if test="fahuodi != null">
+                fahuodi = #{fahuodi},
+            </if>
+                        <if test="fahuorendianhua != null">
+                fahuorendianhua = #{fahuorendianhua},
+            </if>
+                        <if test="fahuoren != null">
+                fahuoren = #{fahuoren},
+            </if>
+                        <if test="shouhuorendianhua != null">
+                shouhuorendianhua = #{shouhuorendianhua},
+            </if>
+                        <if test="shouhuoren != null">
+                shouhuoren = #{shouhuoren},
+            </if>
+                        <if test="shijian != null">
+                shijian = #{shijian},
+            </if>
+                        <if test="beizhu != null">
+                beizhu = #{beizhu},
+            </if>
+                        <if test="tianjiaren != null">
+                tianjiaren = #{tianjiaren},
+            </if>
+                        <if test="iszf != null">
+                iszf = #{iszf},
+            </if>
+                    </set>
+        where id = #{id}
+    </update>
+        <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.spring.entity.Yuyue">
+        INSERT INTO
+        <include refid="table"/>
+        ( bianhao , leixing , huowu , jine , quyu , mudidi , fahuodi , fahuorendianhua , fahuoren , shouhuorendianhua , shouhuoren , shijian , beizhu , tianjiaren , iszf ) values( #{bianhao} , #{leixing} , #{huowu} , #{jine} , #{quyu} , #{mudidi} , #{fahuodi} , #{fahuorendianhua} , #{fahuoren} , #{shouhuorendianhua} , #{shouhuoren} , #{shijian} , #{beizhu} , #{tianjiaren} , #{iszf} )
+    </insert>
+
+</mapper>

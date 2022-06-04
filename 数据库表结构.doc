@@ -1,0 +1,460 @@
+
+<html xmlns:o="urn:schemas-microsoft-com:office:office"
+      xmlns:w="urn:schemas-microsoft-com:office:word"
+      xmlns="http://www.w3.org/TR/REC-html40">
+<!--<html>-->
+<h3>&nbsp;
+    创建外键索引语句:
+</h3>
+
+<pre style="padding: 20px; display: block; background: #d5d5d5;font-size: 12px">
+;
+ALTER TABLE zhigong ADD FOREIGN KEY (quyu) REFERENCES quyu(id) ON UPDATE CASCADE ON DELETE CASCADE;
+ALTER TABLE yuyue ADD FOREIGN KEY (leixing) REFERENCES huowu(id) ON UPDATE CASCADE ON DELETE CASCADE;
+ALTER TABLE yuyue ADD FOREIGN KEY (quyu) REFERENCES quyu(id) ON UPDATE CASCADE ON DELETE CASCADE;
+ALTER TABLE dingdan ADD FOREIGN KEY (yuyueid) REFERENCES yuyue(id) ON UPDATE CASCADE ON DELETE CASCADE;
+ALTER TABLE dingdan ADD FOREIGN KEY (quyu) REFERENCES quyu(id) ON UPDATE CASCADE ON DELETE CASCADE;
+ALTER TABLE dingdan ADD FOREIGN KEY (yunshu) REFERENCES yunshu(id) ON UPDATE CASCADE ON DELETE CASCADE</pre>
+<p>&nbsp;</p>
+<table width=600 cellpadding="6" cellspacing="1" style="margin: 0 auto">
+    <tbody>
+    <tr>
+        <td colspan="3" bgcolor="#DEDEDE">
+            【管理员】模块,表名：<span style="color: #990000">admins</span>
+        </td>
+    </tr>
+    <tr>
+        <td>字段名</td>
+        <td>字段类型</td>
+        <td>名称</td>
+    </tr>
+        <tr>
+        <td>id</td>
+        <td>int</td>
+        <td> (主键)</td>
+    </tr>
+        <tr>
+        <td>username</td>
+        <td>varchar(50)</td>
+        <td>帐号 </td>
+    </tr>
+        <tr>
+        <td>pwd</td>
+        <td>varchar(50)</td>
+        <td>密码 </td>
+    </tr>
+    
+                    </tbody>
+</table>
+<p>&nbsp;</p>
+<table width=600 cellpadding="6" cellspacing="1" style="margin: 0 auto">
+    <tbody>
+    <tr>
+        <td colspan="3" bgcolor="#DEDEDE">
+            【用户】模块,表名：<span style="color: #990000">yonghu</span>
+        </td>
+    </tr>
+    <tr>
+        <td>字段名</td>
+        <td>字段类型</td>
+        <td>名称</td>
+    </tr>
+        <tr>
+        <td>id</td>
+        <td>int</td>
+        <td> (主键)</td>
+    </tr>
+        <tr>
+        <td>yonghuming</td>
+        <td>varchar(50)</td>
+        <td>用户名 </td>
+    </tr>
+        <tr>
+        <td>mima</td>
+        <td>varchar(50)</td>
+        <td>密码 </td>
+    </tr>
+        <tr>
+        <td>xingming</td>
+        <td>varchar(50)</td>
+        <td>姓名 </td>
+    </tr>
+        <tr>
+        <td>xingbie</td>
+        <td>varchar(10)</td>
+        <td>性别 </td>
+    </tr>
+        <tr>
+        <td>shouji</td>
+        <td>varchar(50)</td>
+        <td>手机 </td>
+    </tr>
+    
+                    </tbody>
+</table>
+<p>&nbsp;</p>
+<table width=600 cellpadding="6" cellspacing="1" style="margin: 0 auto">
+    <tbody>
+    <tr>
+        <td colspan="3" bgcolor="#DEDEDE">
+            【区域】模块,表名：<span style="color: #990000">quyu</span>
+        </td>
+    </tr>
+    <tr>
+        <td>字段名</td>
+        <td>字段类型</td>
+        <td>名称</td>
+    </tr>
+        <tr>
+        <td>id</td>
+        <td>int</td>
+        <td> (主键)</td>
+    </tr>
+        <tr>
+        <td>quyu</td>
+        <td>varchar(50)</td>
+        <td>区域 </td>
+    </tr>
+    
+                    </tbody>
+</table>
+<p>&nbsp;</p>
+<table width=600 cellpadding="6" cellspacing="1" style="margin: 0 auto">
+    <tbody>
+    <tr>
+        <td colspan="3" bgcolor="#DEDEDE">
+            【货物】模块,表名：<span style="color: #990000">huowu</span>
+        </td>
+    </tr>
+    <tr>
+        <td>字段名</td>
+        <td>字段类型</td>
+        <td>名称</td>
+    </tr>
+        <tr>
+        <td>id</td>
+        <td>int</td>
+        <td> (主键)</td>
+    </tr>
+        <tr>
+        <td>huowu</td>
+        <td>varchar(50)</td>
+        <td>货物 </td>
+    </tr>
+        <tr>
+        <td>jine</td>
+        <td>decimal(10, 2)</td>
+        <td>金额 </td>
+    </tr>
+    
+                    </tbody>
+</table>
+<p>&nbsp;</p>
+<table width=600 cellpadding="6" cellspacing="1" style="margin: 0 auto">
+    <tbody>
+    <tr>
+        <td colspan="3" bgcolor="#DEDEDE">
+            【运输】模块,表名：<span style="color: #990000">yunshu</span>
+        </td>
+    </tr>
+    <tr>
+        <td>字段名</td>
+        <td>字段类型</td>
+        <td>名称</td>
+    </tr>
+        <tr>
+        <td>id</td>
+        <td>int</td>
+        <td> (主键)</td>
+    </tr>
+        <tr>
+        <td>yunshu</td>
+        <td>varchar(50)</td>
+        <td>运输 </td>
+    </tr>
+    
+                    </tbody>
+</table>
+<p>&nbsp;</p>
+<table width=600 cellpadding="6" cellspacing="1" style="margin: 0 auto">
+    <tbody>
+    <tr>
+        <td colspan="3" bgcolor="#DEDEDE">
+            【职工】模块,表名：<span style="color: #990000">zhigong</span>
+        </td>
+    </tr>
+    <tr>
+        <td>字段名</td>
+        <td>字段类型</td>
+        <td>名称</td>
+    </tr>
+        <tr>
+        <td>id</td>
+        <td>int</td>
+        <td> (主键)</td>
+    </tr>
+        <tr>
+        <td>gonghao</td>
+        <td>varchar(50)</td>
+        <td>工号 </td>
+    </tr>
+        <tr>
+        <td>mima</td>
+        <td>varchar(50)</td>
+        <td>密码 </td>
+    </tr>
+        <tr>
+        <td>xingming</td>
+        <td>varchar(50)</td>
+        <td>姓名 </td>
+    </tr>
+        <tr>
+        <td>quyu</td>
+        <td>int</td>
+        <td>区域 </td>
+    </tr>
+        <tr>
+        <td>xingbie</td>
+        <td>varchar(10)</td>
+        <td>性别 </td>
+    </tr>
+        <tr>
+        <td>shouji</td>
+        <td>varchar(50)</td>
+        <td>手机 </td>
+    </tr>
+    
+                                <tr>
+            <td colspan="3">
+                设置索引，
+                字段：quyu ，
+                关联表【quyu】中的id 字段            </td>
+        </tr>
+                </tbody>
+</table>
+<p>&nbsp;</p>
+<table width=600 cellpadding="6" cellspacing="1" style="margin: 0 auto">
+    <tbody>
+    <tr>
+        <td colspan="3" bgcolor="#DEDEDE">
+            【预约】模块,表名：<span style="color: #990000">yuyue</span>
+        </td>
+    </tr>
+    <tr>
+        <td>字段名</td>
+        <td>字段类型</td>
+        <td>名称</td>
+    </tr>
+        <tr>
+        <td>id</td>
+        <td>int</td>
+        <td> (主键)</td>
+    </tr>
+        <tr>
+        <td>bianhao</td>
+        <td>varchar(50)</td>
+        <td>编号 </td>
+    </tr>
+        <tr>
+        <td>leixing</td>
+        <td>int</td>
+        <td>类型ID </td>
+    </tr>
+        <tr>
+        <td>huowu</td>
+        <td>varchar(50)</td>
+        <td>货物 </td>
+    </tr>
+        <tr>
+        <td>jine</td>
+        <td>decimal(10, 2)</td>
+        <td>金额 </td>
+    </tr>
+        <tr>
+        <td>quyu</td>
+        <td>int</td>
+        <td>区域 </td>
+    </tr>
+        <tr>
+        <td>mudidi</td>
+        <td>varchar(50)</td>
+        <td>目的地 </td>
+    </tr>
+        <tr>
+        <td>fahuodi</td>
+        <td>varchar(50)</td>
+        <td>发货地 </td>
+    </tr>
+        <tr>
+        <td>fahuorendianhua</td>
+        <td>varchar(50)</td>
+        <td>发货人电话 </td>
+    </tr>
+        <tr>
+        <td>fahuoren</td>
+        <td>varchar(50)</td>
+        <td>发货人 </td>
+    </tr>
+        <tr>
+        <td>shouhuorendianhua</td>
+        <td>varchar(50)</td>
+        <td>收货人电话 </td>
+    </tr>
+        <tr>
+        <td>shouhuoren</td>
+        <td>varchar(50)</td>
+        <td>收货人 </td>
+    </tr>
+        <tr>
+        <td>shijian</td>
+        <td>varchar(25)</td>
+        <td>时间 </td>
+    </tr>
+        <tr>
+        <td>beizhu</td>
+        <td>text</td>
+        <td>备注 </td>
+    </tr>
+        <tr>
+        <td>tianjiaren</td>
+        <td>varchar(64)</td>
+        <td>添加人 </td>
+    </tr>
+        <tr>
+        <td>iszf</td>
+        <td>varchar(10)</td>
+        <td>是否支付 </td>
+    </tr>
+    
+                                <tr>
+            <td colspan="3">
+                设置索引，
+                字段：leixing ，
+                关联表【huowu】中的id 字段            </td>
+        </tr>
+                            <tr>
+            <td colspan="3">
+                设置索引，
+                字段：quyu ，
+                关联表【quyu】中的id 字段            </td>
+        </tr>
+                </tbody>
+</table>
+<p>&nbsp;</p>
+<table width=600 cellpadding="6" cellspacing="1" style="margin: 0 auto">
+    <tbody>
+    <tr>
+        <td colspan="3" bgcolor="#DEDEDE">
+            【订单】模块,表名：<span style="color: #990000">dingdan</span>
+        </td>
+    </tr>
+    <tr>
+        <td>字段名</td>
+        <td>字段类型</td>
+        <td>名称</td>
+    </tr>
+        <tr>
+        <td>id</td>
+        <td>int</td>
+        <td> (主键)</td>
+    </tr>
+        <tr>
+        <td>yuyueid</td>
+        <td>int</td>
+        <td>预约id </td>
+    </tr>
+        <tr>
+        <td>bianhao</td>
+        <td>varchar(50)</td>
+        <td>编号 </td>
+    </tr>
+        <tr>
+        <td>huowu</td>
+        <td>varchar(50)</td>
+        <td>货物 </td>
+    </tr>
+        <tr>
+        <td>jine</td>
+        <td>decimal(10, 2)</td>
+        <td>金额 </td>
+    </tr>
+        <tr>
+        <td>quyu</td>
+        <td>int</td>
+        <td>区域 </td>
+    </tr>
+        <tr>
+        <td>mudidi</td>
+        <td>varchar(50)</td>
+        <td>目的地 </td>
+    </tr>
+        <tr>
+        <td>fahuodi</td>
+        <td>varchar(50)</td>
+        <td>发货地 </td>
+    </tr>
+        <tr>
+        <td>fahuorendianhua</td>
+        <td>varchar(50)</td>
+        <td>发货人电话 </td>
+    </tr>
+        <tr>
+        <td>fahuoren</td>
+        <td>varchar(50)</td>
+        <td>发货人 </td>
+    </tr>
+        <tr>
+        <td>shouhuorendianhua</td>
+        <td>varchar(50)</td>
+        <td>收货人电话 </td>
+    </tr>
+        <tr>
+        <td>shouhuoren</td>
+        <td>varchar(50)</td>
+        <td>收货人 </td>
+    </tr>
+        <tr>
+        <td>tianjiaren</td>
+        <td>varchar(64)</td>
+        <td>添加人 </td>
+    </tr>
+        <tr>
+        <td>yunshu</td>
+        <td>int</td>
+        <td>运输 </td>
+    </tr>
+        <tr>
+        <td>beizhu</td>
+        <td>text</td>
+        <td>备注 </td>
+    </tr>
+        <tr>
+        <td>caozuoren</td>
+        <td>varchar(64)</td>
+        <td>操作人 </td>
+    </tr>
+    
+                                <tr>
+            <td colspan="3">
+                设置索引，
+                字段：yuyueid ，
+                关联表【yuyue】中字段id            </td>
+        </tr>
+                            <tr>
+            <td colspan="3">
+                设置索引，
+                字段：quyu ，
+                关联表【quyu】中的id 字段            </td>
+        </tr>
+                            <tr>
+            <td colspan="3">
+                设置索引，
+                字段：yunshu ，
+                关联表【yunshu】中的id 字段            </td>
+        </tr>
+                </tbody>
+</table>
+<p>&nbsp;</p>
+
+
+</html>
